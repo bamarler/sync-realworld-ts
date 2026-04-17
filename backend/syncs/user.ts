@@ -186,6 +186,7 @@ const GetCurrentUser = (
     [API.request, { method: "GET", path: "/api/user" }, { request }],
   ),
   where: async (frames: Frames): Promise<Frames> => {
+    console.log(frames)
     const tokenFrames = await frames.query(API._get, { request }, { token });
     const userFrames = await tokenFrames.query(JWT._getUser, { token }, {
       user,
